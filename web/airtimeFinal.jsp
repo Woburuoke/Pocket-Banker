@@ -17,26 +17,13 @@
         <%@include file="header2.jsp" %>
         <main class="container-fluid">
             <h1 class=" my-3">Airtime Confirmation</h1>
-            
-       
+
+
             <div class="alert alert-success alert-dismissible" role="alert">
                 Recharge Successful
-                
                 <a href="home" class="btn-close" data-bs-dismiss="alert" aria-close="close" ></a>
-                
-                
             </div>
-      
-            
-            
-             
-            
-            
-            
-            
-            
-             
-            
+
         </main>
         <script src="bootstrap-5.0.0/js/bootstrap.min.js">
         </script>

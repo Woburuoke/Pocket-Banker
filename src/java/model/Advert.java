@@ -11,12 +11,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  *
  * @author WOBOH. E N PC
  */
-@Entity(name="adverts")
+@Entity
+@Table(name="adverts")
 public class Advert implements Serializable
 {
     @Id

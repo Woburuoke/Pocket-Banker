@@ -37,8 +37,7 @@
                     <option value="mtn">Mtn</option>
                     <option value="glo">Glo</option>
                     <option value="airtel">Airtel</option>
-                    <option value="9mobile">9 mobile</option>
-                    
+                    <option value="9mobile">9 mobile</option>    
                 </select>
                 
             </div>
@@ -52,17 +51,12 @@
                 <label class="form-label" for="amount">Amount</label>
                 <input type="text" id="amount" name="amount" class="form-control" placeholder="enter amount" />
             </div>
-            
- 
-            
+   
             <div class="mb-3">
                 <label class="form-label" for="password">Password</label>
                 <input type="password" id="password" name="password" class="form-control" />
             </div>
-            
-                <input type="submit" value="Confirm" class=" btn btn-primary" />
-             
-            
+                <input type="submit" value="Confirm" class=" btn btn-primary" />            
             </form>
             
         </main>

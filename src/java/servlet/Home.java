@@ -12,42 +12,39 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import model.Account;
-@WebServlet(name="Home", urlPatterns={"/home"})
+
+@WebServlet(name = "Home", urlPatterns = {"/home"})
 public class Home extends HttpServlet {
-   
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException 
-    {
+            throws ServletException, IOException {
         HttpSession session = request.getSession();
-       
-        
-        if(session.getAttribute("account") != null)
-        { 
-            Account account = (Account)session.getAttribute("account");
-            session.setAttribute("account", account);
+
+        if (session.getAttribute("account") != null) {
+            Account account = (Account) session.getAttribute("account");
+
+            EntityManager entityManager = Persistence.
+                    createEntityManagerFactory("BankWebAppPU").createEntityManager();
+
+            entityManager.getTransaction().begin();
+
+            int accountId = account.getId();
+
+            Account account2 = entityManager.find(Account.class, accountId);
+
+            session.setAttribute("account", account2);
             request.getRequestDispatcher("home.jsp").forward(request, response);
-        }
-        else 
-        {
+        } else {
             response.sendRedirect("login");
         }
-        
-        
-        
-        		
-		
-   
-    } 
+
+    }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException 
-    {
-       
-       
-    }
+            throws ServletException, IOException {
 
+    }
 
 }

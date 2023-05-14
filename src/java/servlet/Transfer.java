@@ -44,9 +44,6 @@ public class Transfer extends HttpServlet {
             String narration = request.getParameter("narration");
             String password = request.getParameter("password");
 
-            System.out.println(accountNumber);
-            System.out.println(destinationBank);
-
             EntityManager entityManager
                     = Persistence.createEntityManagerFactory("BankWebAppPU").createEntityManager();
 
@@ -59,7 +56,6 @@ public class Transfer extends HttpServlet {
             try {
                 Account account2 = (Account) query.getSingleResult();
 
-//                response.sendRedirect("home");
                 if (password.equals(account.getPassword())) {
                     if (account.getAccountbalance() > amount) {
 

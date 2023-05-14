@@ -18,40 +18,19 @@
         <%@include file="header2.jsp" %>
         <main class="container-fluid">
             <h1 class=" my-3">Transfer Confirmation</h1>
-            
-     
-            
-            
-            
-                <div class=" row g-0 border border-1 border-muted mt-5" >
-                    <div class="col-12 col-md-5 px-5 bg-info py-3">
-                    
-                    <span class="d-block fs-3 pb-3 pt-2  display-3">You Are Transferring</span>
-		    <span class="d-block fs-3 fw-bolder pb-3 ">${amount}</span>
-                    <span class="d-block fs-6 pb-2  "><p class="font-italic" style="padding: 0 0 0 100px; font-style: italic; font-family: apple">To</p></span>
-		    <span class="d-block fs-3 fw-bolder pb-4">${account2.firstName} ${account2.lastName}</span>
-                    <span class=" fs-6 btn btn-outline-primary"><a href="transferFinal" style="text-decoration: none">Confirm</a></span>
-                    
-                    </div>
-                    <div class="col-12 col-md-7 heroImage" style="background-image: url('${adverts.photo}')">
-                        <div >
-                            
-<!--                            <img src="${adverts.photo}" alt="${adverts.header_text}" class="w-100"  />-->
-                            
-                        </div>
-                        
-                    
-                    </div>
 
-            </div>
-            
-            
-            
-            
-            
-            
-             
-            
+            <div class=" row g-0 border border-1 border-muted mt-5" >
+                <div class="col-12 col-md-5 px-5 bg-info py-3">
+
+                    <span class="d-block fs-3 pb-3 pt-2  display-3">You Are Transferring</span>
+                    <span class="d-block fs-3 fw-bolder pb-3 ">${amount}</span>
+                    <span class="d-block fs-6 pb-2  "><p class="font-italic" style="padding: 0 0 0 100px; font-style: italic; font-family: apple">To</p></span>
+                    <span class="d-block fs-3 fw-bolder pb-4">${account2.firstName} ${account2.lastName}</span>
+                    <span class=" fs-6 btn btn-outline-primary"><a href="transferFinal" style="text-decoration: none">Confirm</a></span>
+
+                </div>
+                <div class="col-12 col-md-7 heroImage" style="background-image: url('${adverts.photo}')"><div >
+
         </main>
         <script src="bootstrap-5.0.0/js/bootstrap.min.js">
         </script>

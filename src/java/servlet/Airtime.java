@@ -35,69 +35,67 @@ public class Airtime extends HttpServlet {
         HttpSession session = request.getSession();
 
         if (session.getAttribute("account") != null) {
-            
+
             Account account = (Account) session.getAttribute("account");
 
-        String phoneNumber = request.getParameter("phoneNumber");
-        String serviceProvider = request.getParameter("serviceProvider");
-        int amount = Integer.parseInt(request.getParameter("amount"));
+            String phoneNumber = request.getParameter("phoneNumber");
+            String serviceProvider = request.getParameter("serviceProvider");
+            int amount = Integer.parseInt(request.getParameter("amount"));
 
-        String password = request.getParameter("password");
+            String password = request.getParameter("password");
 
-        String r8 = "0([789][01][0-9]{8})";
+            String r8 = "0([789][01][0-9]{8})";
 
-        if (phoneNumber.isEmpty() || serviceProvider.isEmpty() || request.getParameter("amount").isEmpty() || password.isEmpty()) {
+            if (phoneNumber.isEmpty() || serviceProvider.isEmpty() || request.getParameter("amount").isEmpty() || password.isEmpty()) {
 
-            session.setAttribute("feedback", "One or more Fields are empty");
-            response.sendRedirect("airtime");
-        } else {
-            if (phoneNumber.matches(r8)) {
-                if (account.getAccountbalance() > amount) {
-                    if (account.getPassword().equals(password)) {
-                        int senderNewBalance = (account.getAccountbalance() - amount);
-                        EntityManager entityManager = Persistence.
-                                createEntityManagerFactory("BankWebAppPU").createEntityManager();
+                session.setAttribute("feedback", "One or more Fields are empty");
+                response.sendRedirect("airtime");
+            } else {
+                if (phoneNumber.matches(r8)) {
+                    if (account.getAccountbalance() > amount) {
+                        if (account.getPassword().equals(password)) {
+                            int senderNewBalance = (account.getAccountbalance() - amount);
+                            EntityManager entityManager = Persistence.
+                                    createEntityManagerFactory("BankWebAppPU").createEntityManager();
 
-                        entityManager.getTransaction().begin();
+                            entityManager.getTransaction().begin();
 
-                        int accountId = account.getId();
+                            int accountId = account.getId();
 
-                        Account account3 = entityManager.find(Account.class, accountId);
+                            Account account3 = entityManager.find(Account.class, accountId);
 
-                        account3.setAccountbalance(senderNewBalance);
+                            account3.setAccountbalance(senderNewBalance);
 
-                        entityManager.persist(account3);
+                            entityManager.persist(account3);
 
-                        entityManager.getTransaction().commit();
+                            entityManager.getTransaction().commit();
 
-                        //        
-                        response.sendRedirect("airtimeFinal");
+                            response.sendRedirect("airtimeFinal");
+
+                        } else {
+                            session.setAttribute("feedback", "Your Password is Incorrect");
+                            response.sendRedirect("airtime");
+
+                        }
 
                     } else {
-                        session.setAttribute("feedback", "Your Password is Incorrect");
+                        session.setAttribute("feedback", "Insufficient Funds");
                         response.sendRedirect("airtime");
 
                     }
 
                 } else {
-                    session.setAttribute("feedback", "Insufficient Funds");
+                    session.setAttribute("feedback", "Invalid Phone Number");
                     response.sendRedirect("airtime");
 
                 }
 
-            } else {
-                session.setAttribute("feedback", "Invalid Phone Number");
-                response.sendRedirect("airtime");
-
             }
-
-        }
-
 
         } else {
             response.sendRedirect("index");
         }
-        
+
     }
 
 }

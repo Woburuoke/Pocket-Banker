@@ -59,7 +59,6 @@ public class TransferConfirmation extends HttpServlet {
 
             entityManager.getTransaction().commit();
 
-//        session.setAttribute("feedback", "Transfer Successful");
             response.sendRedirect("transferConfirmation");
 
         } else {

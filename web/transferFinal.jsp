@@ -22,11 +22,12 @@
             <div class="alert alert-success alert-dismissible" role="alert">
                 Transfer Successful
 
-                <a href="home" class="btn-close" data-bs-dismiss="alert" aria-close="close" ></a>
+                <a href="/home" class="btn-close" data-bs-dismiss="alert" aria-close="close" id="alertAction" ></a>
 
             </div>
         </main>
         <script src="bootstrap-5.0.0/js/bootstrap.min.js">
         </script>
+
     </body>
 </html>
